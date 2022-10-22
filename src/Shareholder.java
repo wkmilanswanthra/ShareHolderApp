@@ -1,7 +1,11 @@
 public class Shareholder {
 
-    private int customerId, phone;
-    private String firstname, surname, address, portfolioId;
+    private int customerId;
+    private String firstname;
+    private String surname;
+    private String address;
+    private String portfolioId;
+    private String phone;
 
     public int getCustomerId() {
         return customerId;
@@ -35,11 +39,11 @@ public class Shareholder {
         this.address = address;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -51,7 +55,7 @@ public class Shareholder {
         this.portfolioId = portfolioId;
     }
 
-    public Shareholder(int customerId, String firstname, String surname, String address, int phone, String portfolioId) {
+    public Shareholder(int customerId, String firstname, String surname, String address, String phone, String portfolioId) {
         this.customerId = customerId;
         this.firstname = firstname;
         this.surname = surname;

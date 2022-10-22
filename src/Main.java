@@ -63,26 +63,25 @@ public class Main {
             File file = new File(fileName);
             try {
                 Scanner readFile = new Scanner(file);
-                StringTokenizer tokenComma = null;
 
                 int custId = 0;
+                String[] temp ;
                 String name = "";
                 String firstName = "";
                 String surname = "";
                 String address = "";
-                int phone = 0;
+                String phone = "";
                 String pId = "";
 
                 while (readFile.hasNextLine()) {
-                    tokenComma = new StringTokenizer(readFile.nextLine(), ",");
-
-                    custId = Integer.parseInt(tokenComma.nextToken());
-                    name = tokenComma.nextToken();
+                    temp = readFile.nextLine().split(",");
+                    custId = Integer.parseInt(temp[0]);
+                    name = temp[1];
                     firstName = name.split(" ", 2)[0];
                     surname = name.split(" ", 2)[1];
-                    address = tokenComma.nextToken();
-                    pId = tokenComma.nextToken();
-
+                    address = temp[2];
+                    phone = (temp[3]);
+                    pId = temp[4];
                     Shareholder shareholder = new Shareholder(custId, firstName, surname, address, phone, pId);
                     shareholders.add(shareholder);
 
@@ -209,14 +208,14 @@ public class Main {
         do {
             System.out.print("Enter the share code of the share which you wish to update the price : ");
             String shareCode = getUserInput();
-            for (int i = 0; i < shares.size(); i++) {
-                if (Objects.equals(shares.get(i).getShareCode(), shareCode)) {
-                    System.out.print("Current price: " + shares.get(i).getPrice() + ". Enter the new price :");
+            for (Share share : shares) {
+                if (Objects.equals(share.getShareCode(), shareCode)) {
+                    System.out.print("Current price: " + share.getPrice() + ". Enter the new price :");
 
                     while (true) {
                         try {
                             double price = Double.parseDouble(getUserInput());
-                            shares.get(i).setPrice(price);
+                            share.setPrice(price);
                             System.out.println("New share price successfully updated\n\n");
                             break loop;
                         } catch (Exception e) {
@@ -237,16 +236,15 @@ public class Main {
         do {
             System.out.print("Enter first name and the surname of the user whose phone number must be changed : ");
             String name = getUserInput().toLowerCase();
-            for (int i = 0; i < shareholders.size(); i++) {
-                if (Objects.equals((shareholders.get(i).getFirstname().toLowerCase() + " " + shareholders.get(i).getSurname().toLowerCase()), name)) {
+            for (Shareholder shareholder : shareholders) {
+                if (Objects.equals((shareholder.getFirstname().toLowerCase() + " " + shareholder.getSurname().toLowerCase()), name)) {
                     while (true) {
                         try {
                             System.out.print("Enter the new phone number : ");
                             String newPhone = getUserInput();
-                            System.out.println(newPhone.length() + " " + newPhone.charAt(0) + " " + newPhone.charAt(1));
                             if (newPhone.length() != 10 || newPhone.charAt(0) != '0' || newPhone.charAt(1) != '4')
                                 throw new Exception("Invalid Phone Number");
-                            shareholders.get(i).setPhone(Integer.parseInt(newPhone));
+                            shareholder.setPhone(newPhone);
                             System.out.println("Telephone Number successfully updated\n\n");
 
                             break loop;
@@ -271,9 +269,17 @@ public class Main {
                 PortfolioShare item = getPortfolioShareData(portfolio.getShares(), share.getShareCode());
 
                 if (item!=null){
-
+                    System.out.println("Would you like to buy or sell?");
+                    System.out.println("1.Buy");
+                    System.out.println("2.Sell");
+                    switch (Integer.parseInt(getUserInput())){
+                        case 1-> buyShares(portfolio,item);
+                        case 2-> sellShares(portfolio,item);
+                        default -> {
+                        }
+                    }
                 }else {
-                    buyNewShares(portfolio, item.getShareCode());
+                    buyNewShares(portfolio, share.getShareCode());
                 }
 
             }else{
@@ -298,7 +304,36 @@ public class Main {
         }
     }
 
-    private static void sellShares(Portfolio portfolio, String shareCode, int amount) {
+    private static void buyShares(Portfolio portfolio, PortfolioShare item) {
+        loop: while (true){
+            System.out.print("Enter the amount of "+item.getShareCode()+" shares you want to buy : ");
+            try {
+                int amount = Integer.parseInt(getUserInput());
+                item.setNumOfShares(item.getNumOfShares()+amount);
+                System.out.println("Records successfully updated.");
+                break loop;
+            } catch (NumberFormatException e) {
+                System.out.println("Enter a valid amount");
+            }
+        }
+    }
+
+    private static void sellShares(Portfolio portfolio, PortfolioShare item) {
+        loop: while (true){
+            System.out.print("Enter the amount of "+item.getShareCode()+" shares you want to sell : ");
+            try {
+                int amount = Integer.parseInt(getUserInput());
+                if (amount>item.getNumOfShares()) {
+                    System.out.println("Insufficient balance for that transaction");
+                    continue;
+                }
+                item.setNumOfShares(item.getNumOfShares()-amount);
+                System.out.println("Records successfully updated.");
+                break loop;
+            } catch (NumberFormatException e) {
+                System.out.println("Enter a valid amount");
+            }
+        }
     }
 
     private static void portfolioReport() {
@@ -439,7 +474,7 @@ public class Main {
             FileWriter writer = new FileWriter("src/shareholders.txt");
             for (Shareholder x : shareholders
             ) {
-                writer.write(x.getCustomerId() + "," + x.getFirstname() + " " + x.getSurname() + "," + x.getAddress() + "," + ((x.getPhone() != 0) ? x.getPhone() : "") + "," + x.getPortfolioId() + "\n");
+                writer.write(x.getCustomerId() + "," + x.getFirstname() + " " + x.getSurname() + "," + x.getAddress() + "," + x.getPhone() + "," + x.getPortfolioId() + "\n");
             }
             writer.close();
             System.out.println("shareholders file written successfully.");
