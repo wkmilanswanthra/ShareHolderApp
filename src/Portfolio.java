@@ -1,4 +1,7 @@
 import java.util.ArrayList;
+/*
+ * portfolio class
+ * */
 
 public class Portfolio {
     private String pId;

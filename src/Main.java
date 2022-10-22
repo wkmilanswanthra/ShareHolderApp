@@ -12,6 +12,7 @@ public class Main {
 
     public static void main(String[] args) {
 
+        System.out.println("Share Holder Managing Software\n");
         while (true) {
             //display the main menu
             mainMenu();
@@ -22,7 +23,7 @@ public class Main {
             try {
                 choice = Integer.parseInt(getUserInput());
             } catch (Exception e) {
-                System.out.println("\nPlease enter a valid number between 1 and 6.");
+                System.out.println("\n******Please enter a valid number between 1 and 6.******\n");
                 continue;
             }
             //execute relevant function according to the choice
@@ -33,7 +34,7 @@ public class Main {
                 case 4 -> portfolioReport();
                 case 5 -> saveFiles();
                 case 6 -> exitProgram();
-                default -> System.out.println("\nPlease enter a valid number between 1 and 6.");
+                default -> System.out.println("\n******Please enter a valid number between 1 and 6******\n");
             }
         }
 
@@ -95,7 +96,7 @@ public class Main {
                     shareholders.add(shareholder);
 
                 }
-                System.out.println("Shareholders loaded successfully");
+                System.out.println("\n*******   Shareholders loaded successfully    *******");
                 break;
             } catch (Exception e) {
                 System.out.print(e + "\nFile is either corrupted or not found. Please enter a valid name of the file containing shareholder information :");
@@ -103,7 +104,8 @@ public class Main {
             }
         }
     }
-//    function to load the sharea.txt
+
+    //    function to load the sharea.txt
     private static void loadShares() {
         String fileName = "src/shares.txt";
 
@@ -130,7 +132,7 @@ public class Main {
                     shares.add(share);
 
                 }
-                System.out.println("Shares loaded successfully");
+                System.out.println("   *******   Shares loaded successfully   *******");
                 break;
             } catch (Exception e) {
                 System.out.print(e + "\nFile is either corrupted or not found. Please enter a valid name of the file containing Shares information :");
@@ -138,6 +140,7 @@ public class Main {
             }
         }
     }
+
     //function to load the portfolios.txt
     private static void loadPortfolios() {
         String fileName = "src/portfolios.txt";
@@ -172,7 +175,7 @@ public class Main {
                     portfolios.add(portfolio);
 
                 }
-                System.out.println("Portfolios loaded successfully\n\n");
+                System.out.println(" *******   Portfolios loaded successfully   *******\n\n");
                 break;
             } catch (Exception e) {
                 System.out.print(e + "\nFile is either corrupted or not found. Please enter a valid name of the file containing portfolios information :");
@@ -180,6 +183,7 @@ public class Main {
             }
         }
     }
+
     //function to display the update menu
     private static void update() {
         loop:
@@ -194,7 +198,7 @@ public class Main {
             try {
                 choice = Integer.parseInt(getUserInput());
             } catch (Exception e) {
-                System.out.println("\nPlease enter a valid number between 1 and 6.");
+                System.out.println("\n*****Please enter a valid number between 1 and 3\n*****");
                 continue;
             }
             switch (choice) {
@@ -203,10 +207,11 @@ public class Main {
                 case 3 -> {
                     break loop;
                 }
-                default -> System.out.println("\nPlease enter a valid number between 1 and 3.");
+                default -> System.out.println("\n*****Please enter a valid number between 1 and 3*****");
             }
         }
     }
+
     //function to update the price of an individual share
     private static void updateSharePrice() {
         loop:
@@ -215,13 +220,13 @@ public class Main {
             String shareCode = getUserInput();
             Share share = getSharesData(shareCode);
             if ((share != null)) {
-                System.out.print("Current price: " + share.getPrice() + ". Enter the new price :");
+                System.out.print("Current price: " + share.getPrice() + ". \nEnter the new price :");
 
                 while (true) {
                     try {
                         double price = Double.parseDouble(getUserInput());
                         share.setPrice(price);
-                        System.out.println("New share price successfully updated\n\n");
+                        System.out.println("******   New share price successfully updated    *****\n\n");
                         break loop;
                     } catch (Exception e) {
                         System.out.print("Enter a valid numeric amount : ");
@@ -235,6 +240,7 @@ public class Main {
         } while (!Objects.equals(getUserInput(), "exit"));
 
     }
+
     //function to update the customer phone number details
     private static void updateCustomerPhone() {
         loop:
@@ -242,7 +248,7 @@ public class Main {
             System.out.print("Enter first name and the surname of the user whose phone number must be changed : ");
             String name = getUserInput().toLowerCase();
             Shareholder shareholder = getShareholderData(name);
-            if (shareholder!=null) {
+            if (shareholder != null) {
                 while (true) {
                     try {
                         System.out.print("Enter the new phone number : ");
@@ -262,38 +268,47 @@ public class Main {
             System.out.print("No user was found with that names. To try again press enter. To go back type \"exit\" and press enter. :");
         } while (!Objects.equals(getUserInput(), "exit"));
     }
+
     //function to do different trades on shares
     private static void tradeShares() {
-        System.out.print("Enter the name of the user : ");
-        Shareholder shareholder = getShareholderData(getUserInput().toLowerCase());
-        if (shareholder != null) {
-            System.out.print("Enter the Sharecode of the company : ");
-            Share share = getSharesData(getUserInput());
-            if (share != null) {
-                Portfolio portfolio = getPortfolioData(shareholder.getPortfolioId());
-                PortfolioShare item = getPortfolioShareData(portfolio.getShares(), share.getShareCode());
+        loop:
+        do {
+            System.out.print("Enter the name of the user : ");
+            Shareholder shareholder = getShareholderData(getUserInput().toLowerCase());
+            if (shareholder != null) {
+                System.out.print("Enter the Sharecode of the company : ");
+                Share share = getSharesData(getUserInput());
+                if (share != null) {
+                    Portfolio portfolio = getPortfolioData(shareholder.getPortfolioId());
+                    PortfolioShare item = getPortfolioShareData(portfolio.getShares(), share.getShareCode());
 
-                if (item != null) {
-                    System.out.println("Would you like to buy or sell?");
-                    System.out.println("1.Buy");
-                    System.out.println("2.Sell");
-                    switch (Integer.parseInt(getUserInput())) {
-                        case 1 -> buyShares(portfolio, item);
-                        case 2 -> sellShares(portfolio, item);
-                        default -> {
+                    if (item != null) {
+                        System.out.println("Would you like to buy or sell?");
+                        System.out.println("1.Buy");
+                        System.out.println("2.Sell");
+                        System.out.print("Choice : ");
+                        switch (Integer.parseInt(getUserInput())) {
+                            case 1 -> buyShares(portfolio, item);
+                            case 2 -> sellShares(portfolio, item);
+                            default -> {
+                            }
                         }
+                        break;
+                    } else {
+                        buyNewShares(portfolio, share.getShareCode());
+                        break;
                     }
+
                 } else {
-                    buyNewShares(portfolio, share.getShareCode());
+                    System.out.println("No such Sharecode exists");
                 }
-
             } else {
-                System.out.println("No such Sharecode exists");
+                System.out.println("No such User exists");
             }
-        } else
-            System.out.println("No such user exists");
-
+            System.out.print("An error occurred. To try again press enter. To go back type \"exit\" and press enter. :");
+        }while(!Objects.equals(getUserInput(), "exit"));
     }
+
     //function to buy new shares
     private static void buyNewShares(Portfolio portfolio, String shareCode) {
         loop:
@@ -302,13 +317,14 @@ public class Main {
             try {
                 int amount = Integer.parseInt(getUserInput());
                 portfolio.getShares().add(new PortfolioShare(shareCode, amount));
-                System.out.println("Records successfully updated.");
+                System.out.println("*****   Records successfully updated   *****\n");
                 break loop;
             } catch (NumberFormatException e) {
-                System.out.println("Enter a valid amount");
+                System.out.println("*****Enter a valid amount*****\n");
             }
         }
     }
+
     //function to buy shares that the user already have
     private static void buyShares(Portfolio portfolio, PortfolioShare item) {
         loop:
@@ -317,13 +333,14 @@ public class Main {
             try {
                 int amount = Integer.parseInt(getUserInput());
                 item.setNumOfShares(item.getNumOfShares() + amount);
-                System.out.println("Records successfully updated.");
+                System.out.println("Records successfully updated.\n");
                 break loop;
             } catch (NumberFormatException e) {
-                System.out.println("Enter a valid amount");
+                System.out.println("*****Enter a valid amount*****");
             }
         }
     }
+
     //function to sell existing shares
     private static void sellShares(Portfolio portfolio, PortfolioShare item) {
         loop:
@@ -332,22 +349,24 @@ public class Main {
             try {
                 int amount = Integer.parseInt(getUserInput());
                 if (amount > item.getNumOfShares()) {
-                    System.out.println("Insufficient balance for that transaction");
+                    System.out.println("*****Insufficient balance for that transaction*****\n");
                     continue;
                 }
                 item.setNumOfShares(item.getNumOfShares() - amount);
-                System.out.println("Records successfully updated.");
+                System.out.println("*****    Records successfully updated.   *****");
                 break loop;
             } catch (NumberFormatException e) {
-                System.out.println("Enter a valid amount");
+                System.out.println("*****Enter a valid amount*****");
             }
         }
     }
+
     //function for the report section
     private static void portfolioReport() {
         getNumOfUsers();
 
     }
+
     //function to get the choice of the user on number of reports
     private static void getNumOfUsers() {
         loop:
@@ -373,6 +392,7 @@ public class Main {
         }
     }
 
+    //display reports on all users
     private static void allUserReport() {
         for (Shareholder x : shareholders) {
             Portfolio portfolio = getPortfolioData(x.getPortfolioId());
@@ -380,6 +400,7 @@ public class Main {
         }
     }
 
+    //display a report on a single user
     private static void singleUserReport() {
         System.out.print("Enter the name of the user : ");
         String name = getUserInput().toLowerCase();
@@ -389,13 +410,14 @@ public class Main {
             if (portfolio != null)
                 createTable(portfolio, shareholder);
             else
-                System.out.println("No Portfolio data available");
+                System.out.println("*****No Portfolio data available*****\n");
         } else
-            System.out.println("No such user exists.");
+            System.out.println("*****No such user exists.*****\n");
 
 
     }
 
+    //function to create the table for generating reports
     private static void createTable(Portfolio portfolio, Shareholder shareholder) {
         System.out.println("\n\nPORTFOLIO REPORT for " + shareholder.getFirstname() + " " + shareholder.getSurname());
         System.out.println(shareholder.getAddress());
@@ -415,8 +437,10 @@ public class Main {
         }
         table.addRow("Total", "", Double.toString(totShare), "", Double.toString(totSharePrice));
         table.print();
+        System.out.println("\n\n");
     }
 
+    //function for getting shareholder data using name
     private static Shareholder getShareholderData(String name) {
         for (Shareholder shareholder : shareholders) {
             if (Objects.equals((shareholder.getFirstname().toLowerCase() + " " + shareholder.getSurname().toLowerCase()), name)) {
@@ -426,6 +450,7 @@ public class Main {
         return null;
     }
 
+    //function to get the shares data using name
     private static Share getSharesData(String name) {
         for (Share share : shares) {
             if (Objects.equals(share.getShareCode(), name)) {
@@ -435,6 +460,7 @@ public class Main {
         return null;
     }
 
+    //    function to get the portfolio data using the portfolio ID
     private static Portfolio getPortfolioData(String pId) {
         for (Portfolio portfolio : portfolios) {
             if (Objects.equals(portfolio.getpId(), pId)) {
@@ -444,6 +470,7 @@ public class Main {
         return null;
     }
 
+    //get inner object data from a portfolio object
     private static PortfolioShare getPortfolioShareData(ArrayList<PortfolioShare> portfo, String shareCode) {
         for (PortfolioShare portfolio : portfo) {
             if (Objects.equals(portfolio.getShareCode(), shareCode)) {
@@ -453,13 +480,14 @@ public class Main {
         return null;
     }
 
+    //function to save the files
     private static void saveFiles() {
         saveShares();
         saveShareholders();
         savePortfolios();
     }
 
-
+    //function to save portfolios.txt
     private static void savePortfolios() {
         try {
             FileWriter writer = new FileWriter("src/portfolios.txt");
@@ -473,12 +501,13 @@ public class Main {
                 writer.write(new StringBuilder().append(temp).append("\n").toString());
             }
             writer.close();
-            System.out.println("portfolios file written successfully.\n\n\n");
+            System.out.println("*****   portfolios file written successfully   *****\n\n\n");
         } catch (Exception e) {
             System.out.println(e);
         }
     }
 
+    //function to save the shareholders folder
     private static void saveShareholders() {
         try {
             FileWriter writer = new FileWriter("src/shareholders.txt");
@@ -487,12 +516,13 @@ public class Main {
                 writer.write(x.getCustomerId() + "," + x.getFirstname() + " " + x.getSurname() + "," + x.getAddress() + "," + x.getPhone() + "," + x.getPortfolioId() + "\n");
             }
             writer.close();
-            System.out.println("shareholders file written successfully.");
+            System.out.println("*****   shareholders file written successfully   *****");
         } catch (Exception e) {
             System.out.println(e);
         }
     }
 
+    //function to save the shares folder
     private static void saveShares() {
         try {
             FileWriter writer = new FileWriter("src/shares.txt");
@@ -501,13 +531,14 @@ public class Main {
                 writer.write(x.getShareCode() + "," + x.getCompany() + "," + x.getPrice() + "\n");
             }
             writer.close();
-            System.out.println("shares file written successfully.");
+            System.out.println("*****   shares file written successfully   *****");
         } catch (Exception e) {
             System.out.println(e);
         }
 
     }
 
+    //function to exit the program
     private static void exitProgram() {
         System.out.println("The program has terminated successfully.\nThank you");
         System.exit(1);

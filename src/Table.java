@@ -3,6 +3,10 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+/*
+*
+* Table class - contains useful functions for creating the table
+* */
 public class Table {
     private static final String HORIZONTAL_SEP = "-";
     private String verticalSep;

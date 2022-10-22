@@ -1,3 +1,7 @@
+/*
+* Shareholder class
+* */
+
 public class Shareholder {
 
     private int customerId;

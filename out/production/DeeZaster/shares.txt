@@ -6,7 +6,7 @@ AMC,Amcor Ltd,15.61
 AMP,AMP Ltd,6.2
 ANN,Ansell Ltd,21.87
 ANZ,ANZ Banking Group Ltd,29.88
-APA,APA Group Units FP Stapled Securities,8.46
+APA,APA Group Units FP Stapled Securities,9.21
 AST,Ausnet Services Ltd,1.67
 ASX,ASX Ltd,52.27
 AWC,Alumina Ltd,2.15

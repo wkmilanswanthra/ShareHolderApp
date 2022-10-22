@@ -1,3 +1,8 @@
+/*
+*
+* Portfolio share class used in portfolio class as an object
+* */
+
 public class PortfolioShare {
     private String shareCode;
     private int numOfShares;
