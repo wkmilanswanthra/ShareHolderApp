@@ -1,0 +1,97 @@
+ABC,Adelaide Brighton,6.33
+AGL,AGL Energy Ltd,23.66
+ALL,Aristocrat Leisure Strong Buy,20.93
+ALQ,Als Ltd,8.39
+AMC,Amcor Ltd,15.61
+AMP,AMP Ltd,6.2
+ANN,Ansell Ltd,21.87
+ANZ,ANZ Banking Group Ltd,29.88
+APA,APA Group Units FP Stapled Securities,8.46
+AST,Ausnet Services Ltd,1.67
+ASX,ASX Ltd,52.27
+AWC,Alumina Ltd,2.15
+AZJ,Aurizon Holdings Ltd,5.01
+BEN,Bendigo and Adelaide,11.66
+BHP,BHP Billiton Ltd,26.26
+BLD,Boral Ltd,6.71
+BOQ,Bank of Queensland,12.85
+BSL,Bluescope Steel Ltd Strong Buy,11.5
+BTT,BT Investment MNGMNT,10.42
+BXB,Brambles Ltd,8.97
+CAR,Carsales.com Ltd,14.15
+CBA,Commonwealth Bank,76.28
+CCL,Coca-Cola Amatil,7.81
+CGF,Challenger Ltd,12.22
+CIM,Cimic Group Ltd,43.19
+COH,Cochlear Ltd,157.5
+CPU,Computershare Ltd,14.54
+CSL,CSL Ltd,130.96
+CSR,CSR Ltd,4.41
+CTX,Caltex Australia,31.39
+CWN,Crown Resorts Ltd,11.73
+CYB,CYBG Plc Cdi 1:1 Foreign Exempt Lse,4.8
+DLX,Duluxgroup Ltd,6.76
+DMP,Domino PIZZA Enterpr,43.05
+DOW,Downer Edi Ltd,6.54
+DXS,Dexus Units FP Stapled,9.41
+EVN,Evolution Mining Ltd Strong Buy,2.41
+FLT,Flight Centre Travel,45.66
+FMG,Fortescue Metals Group,5.55
+FXJ,Fairfax Media Ltd Strong Buy,0.95
+GMG,Goodman Group Stapled Securities FP,8.34
+GNC,Graincorp Ltd Class A,8.01
+GPT,GPT Group Stapled Securities FP,5.05
+HSO,Healthscope Ltd,1.66
+HVN,Harvey Norman,3.84
+IAG,Insurance Australia,6.23
+IFL,IOOF Holdings Ltd,10.87
+ILU,Iluka Resources,9.25
+IOF,Investa Office Fund Stapled Securities,4.5
+IPL,Incitec Pivot,3.55
+JBH,JB Hi-Fi Ltd,22.85
+JHG,Janus Henderson Chess Depositary Interests,41.48
+JHX,James Hardie Indust Chess Depositary Interests 1:1,17.2
+LLC,Lendlease Group Unit Stapled Securities,17.68
+LNK,Link Admin HLDG,7.66
+MFG,Magellan Fin Group Ltd,23.3
+MGR,Mirvac Group Stapled Securities,2.3
+MPL,Medibank Private Ltd,2.97
+MQA,MACQ Atlas Roads Group Ordinary Stapled Securities,5.47
+MQG,Macquarie Group Ltd,87.51
+NAB,National Aust. Bank,30.86
+NCM,Newcrest Mining,22.44
+NST,Northern Star,5.09
+ORA,Orora Ltd Strong Buy,3.16
+ORG,Origin Energy,7.64
+ORI,Orica Ltd,19.73
+OSH,Oil Search Ltd 10 Toea,6.8
+OZL,OZ Minerals,7.88
+PPT,Perpetual Ltd,51.54
+PRY,Primary Health Care,3.05
+QAN,Qantas Airways Strong Buy,5.82
+QBE,QBE Insurance Group,10.47
+QUB,QUBE Holdings Ltd,2.56
+REA,REA Group,69.12
+RHC,Ramsay Health Care,62.21
+RIO,RIO Tinto Ltd Strong Buy,66.81
+RMD,Resmed Inc Cdi 10:1 Foreign Exempt NYSE,10.01
+S32,SOUTH32 Ltd,3.11
+SCG,Scentre Group Stapled Securities,4.05
+SEK,Seek Ltd,16.66
+SGP,Stockland Units Stapled Securities,4.37
+SGR,The Star Ent Group Strong Buy,5.2
+SHL,Sonic Healthcare,21.14
+STO,Santos Ltd,3.91
+SUN,Suncorp Group Ltd,12.75
+SYD,SYD Airport FP Stapled Securities US Prohibited,7.2
+TAH,Tabcorp Holdings Ltd,4.38
+TLS,Telstra Corporation,3.65
+TPM,TPG Telecom Ltd,5.21
+TTS,Tatts Group Ltd,4.02
+TWE,Treasury Wine Estate,14.1
+VOC,Vocus Group Ltd,2.35
+WBC,Westpac Banking Corp,31.44
+WES,Wesfarmers Ltd,41.43
+WFD,Westfield Corp Stapled Securities,7.71
+WOW,Woolworths Ltd,25.39
+WPL,Woodside Petroleum,28.4
